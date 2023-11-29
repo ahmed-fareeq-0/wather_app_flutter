@@ -82,7 +82,7 @@ flutter:
   fonts:
     - family: flutterfonts
       fonts:
-        - asset: assets/fonts/flutterfonts.ttf
+        - asset: assets/fonts/Cairo-Medium.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

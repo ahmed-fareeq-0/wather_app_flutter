@@ -46,7 +46,7 @@ class HomeController extends GetxController {
       'karbala',
       'baghdad',
       'basra',
-      'babylon',
+      'hilla',
       'najaf',
     ];
     cities.forEach((c) {

@@ -11,6 +11,9 @@ class WeatherApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      theme: ThemeData(
+        scaffoldBackgroundColor: Color(0xff161A30),
+      ),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       getPages: [

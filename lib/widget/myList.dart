@@ -28,6 +28,7 @@ class MyList extends GetView<HomeController> {
             width: 140,
             height: 150,
             child: Card(
+              color: Color(0xff31304D),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
               ),
@@ -40,7 +41,7 @@ class MyList extends GetView<HomeController> {
                       style: Theme.of(context).textTheme.caption!.copyWith(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black45,
+                            color: Colors.white,
                             fontFamily: 'flutterfonts',
                           ),
                     ),
@@ -51,7 +52,7 @@ class MyList extends GetView<HomeController> {
                       style: Theme.of(context).textTheme.caption!.copyWith(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black45,
+                            color: Colors.white,
                             fontFamily: 'flutterfonts',
                           ),
                     ),
@@ -63,7 +64,7 @@ class MyList extends GetView<HomeController> {
                     Text(
                       (data != null) ? '${data.weather![0].description}' : '',
                       style: Theme.of(context).textTheme.caption!.copyWith(
-                            color: Colors.black45,
+                            color: Colors.white,
                             fontFamily: 'flutterfonts',
                             fontSize: 14,
                           ),

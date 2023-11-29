@@ -15,7 +15,7 @@ class WeatherService {
     Function(CurrentWeatherData currentWeatherData)? onSuccess,
     Function(dynamic error)? onError,
   }) {
-    final url = '$baseUrl/weather?q=$city&lang=en&$apiKey';
+    final url = '$baseUrl/weather?q=$city&lang=ar&$apiKey';
     ApiRepository(
       url: '$url',
     ).get(
