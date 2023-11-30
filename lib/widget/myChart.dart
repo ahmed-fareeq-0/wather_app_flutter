@@ -20,10 +20,10 @@ class MyChart extends GetView<HomeController> {
           primaryXAxis: CategoryAxis(),
           series: <ChartSeries<FiveDayData, String>>[
             SplineSeries<FiveDayData, String>(
-              dataSource: controller.fiveDaysData,
-              xValueMapper: (FiveDayData f, _) => f.dateTime,
-              yValueMapper: (FiveDayData f, _) => f.temp,
-            ),
+                dataSource: controller.fiveDaysData,
+                xValueMapper: (FiveDayData f, _) => f.dateTime,
+                yValueMapper: (FiveDayData f, _) => f.temp,
+                pointColorMapper: (FiveDayData f, _) => Color(0xff31304D)),
           ],
         ),
       ),

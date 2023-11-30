@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weather_app/screens/homeScreen.dart';
+import 'package:weather_app/screens/splashScreen.dart';
 import 'package:weather_app/utils/Binding/HomeBinding.dart';
 
 void main() {
@@ -12,6 +13,7 @@ class WeatherApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       theme: ThemeData(
+        fontFamily: 'flutterfonts',
         scaffoldBackgroundColor: Color(0xff161A30),
       ),
       debugShowCheckedModeBanner: false,
@@ -19,7 +21,7 @@ class WeatherApp extends StatelessWidget {
       getPages: [
         GetPage(
           name: '/',
-          page: () => HomeScreen(),
+          page: () => SplashScreen(),
           binding: HomeBinding(),
         )
       ],

@@ -6,10 +6,10 @@ import '/service/weatherService.dart';
 class HomeController extends GetxController {
   String? city;
   String? searchText;
-
   CurrentWeatherData currentWeatherData = CurrentWeatherData();
   List<CurrentWeatherData> dataList = [];
   List<FiveDayData> fiveDaysData = [];
+  var isLoading = true;
 
   HomeController({required this.city});
 
@@ -30,32 +30,40 @@ class HomeController extends GetxController {
   }
 
   void getCurrentWeatherData() {
+    isLoading = false;
     WeatherService(city: '$city').getCurrentWeatherData(
         onSuccess: (data) {
           currentWeatherData = data;
           update();
+          isLoading = true;
         },
-        onError: (error) => {
-              print(error),
-              update(),
-            });
+        onError: (error) => {print(error), update(), isLoading = true});
   }
 
   void getTopFiveCities() {
     List<String> cities = [
-      'karbala',
-      'baghdad',
-      'basra',
-      'hilla',
-      'najaf',
+      // 'karbala',
+      'بغداد',
+      'البصرة',
+      'الحلة',
+      'النجف',
+      'أربيل',
+      'السليمانية',
+      'كركوك',
+      'حلبجة',
+      'الموصل',
+      'السماوه'
     ];
     cities.forEach((c) {
+      // isLoading = false;
       WeatherService(city: '$c').getCurrentWeatherData(onSuccess: (data) {
         dataList.add(data);
         update();
+        // isLoading = true;
       }, onError: (error) {
         print(error);
         update();
+        // isLoading = true;
       });
     });
   }

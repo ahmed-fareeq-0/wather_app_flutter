@@ -27,7 +27,6 @@ class MyList extends GetView<HomeController> {
               : data = null;
           return Container(
             width: 140,
-            height: 150,
             child: Card(
               color: Color(0xff31304D),
               shape: RoundedRectangleBorder(
@@ -58,9 +57,23 @@ class MyList extends GetView<HomeController> {
                           ),
                     ),
                     SizedBox(
-                      width: 50,
-                      height: 50,
-                      child: LottieBuilder.asset(Images.cloudyAnim),
+                      width: 55,
+                      height: 55,
+                      child: () {
+                        switch (
+                            (data != null) ? '${data.weather![0].main}' : '') {
+                          case 'Snow':
+                            return Image.asset(Images.snow);
+                          case 'Clouds' || 'Clear':
+                            return LottieBuilder.asset(Images.cloudyAnim);
+                          case 'Rain':
+                            return Image.asset(Images.rain);
+                          case 'Mist' || 'Fog':
+                            return Image.asset(Images.Mist);
+                          default:
+                            return Container();
+                        }
+                      }(),
                     ),
                     Text(
                       (data != null) ? '${data.weather![0].description}' : '',
