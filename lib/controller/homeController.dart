@@ -31,11 +31,12 @@ class HomeController extends GetxController {
 
   void getCurrentWeatherData() {
     isLoading = false;
+    update();
     WeatherService(city: '$city').getCurrentWeatherData(
         onSuccess: (data) {
           currentWeatherData = data;
-          update();
           isLoading = true;
+          update();
         },
         onError: (error) => {print(error), update(), isLoading = true});
   }
