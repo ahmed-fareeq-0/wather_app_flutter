@@ -11,24 +11,28 @@ class WeatherCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     return Container(
-      child: Stack(
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 12),
-            width: double.infinity,
-            height: (MediaQuery.of(context).size.height / 3),
-            child: Card(
-              color: Color(0xff31304D),
-              elevation: 5,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(25),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    padding: EdgeInsets.only(top: 22, left: 20, right: 20),
+        child: Stack(children: <Widget>[
+      Container(
+          padding: EdgeInsets.symmetric(
+            horizontal: screenHeight * 0.02,
+            vertical: screenHeight * 0.015,
+          ),
+          width: double.infinity,
+          // height: screenHeight / 2.8,
+          child: Card(
+            color: Color(0xff31304D),
+            elevation: 5,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(screenHeight * 0.03),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.only(top: 22, left: 20, right: 20),
+                  child: Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
@@ -56,102 +60,104 @@ class WeatherCard extends StatelessWidget {
                                     ),
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                  Divider(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Container(
-                        padding: EdgeInsets.only(left: 25),
-                        child: Column(
+                        Divider(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            Text(
-                              '${controller.currentWeatherData.weather![0].description}',
-                              style:
-                                  Theme.of(context).textTheme.caption!.copyWith(
-                                        color: Colors.white,
-                                        fontSize: 22,
-                                        fontFamily: 'flutterfonts',
-                                      ),
-                            ),
-                            SizedBox(height: 10),
-                            Text(
-                              '${(controller.currentWeatherData.main!.temp! - 273.15).round().toString()}\u2103',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline2!
-                                  .copyWith(
-                                    color: Colors.white,
-                                    fontFamily: 'flutterfonts',
+                            Container(
+                              padding: EdgeInsets.only(left: 25),
+                              child: Column(
+                                children: <Widget>[
+                                  Text(
+                                    '${controller.currentWeatherData.weather![0].description}',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .caption!
+                                        .copyWith(
+                                          color: Colors.white,
+                                          fontSize: 22,
+                                          fontFamily: 'flutterfonts',
+                                        ),
                                   ),
-                            ),
-                            Text(
-                              'min: ${(controller.currentWeatherData.main!.tempMin! - 273.15).round().toString()}\u2103 / max: ${(controller.currentWeatherData.main!.tempMax! - 273.15).round().toString()}\u2103',
-                              style:
-                                  Theme.of(context).textTheme.caption!.copyWith(
-                                        color: Colors.white,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: 'flutterfonts',
-                                      ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(right: 25),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            SizedBox(
-                              width: 120,
-                              height: 120,
-                              child: () {
-                                switch (controller
-                                    .currentWeatherData.weather![0].main) {
-                                  case 'Snow':
-                                    return Image.asset(Images.snow);
-                                  case 'Clouds' || 'Clear':
-                                    return LottieBuilder.asset(
-                                        Images.cloudyAnim);
-                                  case 'Rain':
-                                    return Image.asset(Images.rain);
-                                  case 'Mist' || 'Fog':
-                                    return Image.asset(Images.Mist);
-                                  default:
-                                    return LottieBuilder.asset(
-                                        Images.cloudyAnim);
-                                }
-                              }(),
+                                  SizedBox(height: 10),
+                                  Text(
+                                    '${(controller.currentWeatherData.main!.temp! - 273.15).round().toString()}\u2103',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline2!
+                                        .copyWith(
+                                          color: Colors.white,
+                                          fontFamily: 'flutterfonts',
+                                        ),
+                                  ),
+                                  Text(
+                                    'min: ${(controller.currentWeatherData.main!.tempMin! - 273.15).round().toString()}\u2103 / max: ${(controller.currentWeatherData.main!.tempMax! - 273.15).round().toString()}\u2103',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .caption!
+                                        .copyWith(
+                                          color: Colors.white,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'flutterfonts',
+                                        ),
+                                  ),
+                                ],
+                              ),
                             ),
                             Container(
-                              margin: EdgeInsets.only(bottom: 20),
-                              child: Text(
-                                'الرياح ${controller.currentWeatherData.wind!.speed} كم/ساعة',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .caption!
-                                    .copyWith(
-                                      color: Colors.white,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'flutterfonts',
+                              padding: EdgeInsets.only(right: 25),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  SizedBox(
+                                    width: 120,
+                                    height: 120,
+                                    child: () {
+                                      switch (controller.currentWeatherData
+                                          .weather![0].main) {
+                                        case 'Snow':
+                                          return Image.asset(Images.snow);
+                                        case 'Clouds' || 'Clear':
+                                          return LottieBuilder.asset(
+                                              Images.cloudyAnim);
+                                        case 'Rain':
+                                          return Image.asset(Images.rain);
+                                        case 'Mist' || 'Fog':
+                                          return Image.asset(Images.Mist);
+                                        default:
+                                          return LottieBuilder.asset(
+                                              Images.cloudyAnim);
+                                      }
+                                    }(),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(bottom: 20),
+                                    child: Text(
+                                      'الرياح ${controller.currentWeatherData.wind!.speed} كم/ساعة',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .caption!
+                                          .copyWith(
+                                            color: Colors.white,
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: 'flutterfonts',
+                                          ),
                                     ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ),
-        ],
-      ),
-    );
+          ))
+    ]));
   }
 }

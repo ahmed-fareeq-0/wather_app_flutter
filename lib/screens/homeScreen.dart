@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:weather_app/widget/weatherCard.dart';
 import '../../controller/HomeController.dart';
-import '../../widget/myList.dart';
-import '../../widget/myChart.dart';
+import '../widget/otherCitiesList.dart';
+import '../widget/chart.dart';
 
 class HomeScreen extends GetView<HomeController> {
   @override
@@ -15,77 +15,75 @@ class HomeScreen extends GetView<HomeController> {
           return SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                Container(
-                  padding: EdgeInsets.only(
-                      top: constraints.maxHeight * 0.3 / 4,
-                      left: 20,
-                      right: 20),
-                  child: Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          controller.updateWeather();
-                        },
-                        child: Container(
-                          width: 49,
-                          height: 49,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              bottomLeft: Radius.circular(10),
-                            ),
-                          ),
-                          child: Icon(
-                            Icons.search,
-                            color: Color(0xff31304D),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 5,
-                        child: TextField(
-                          textAlign: TextAlign.right,
-                          onChanged: (value) => controller.city = value,
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                          textInputAction: TextInputAction.search,
-                          onSubmitted: (value) => controller.updateWeather(),
-                          decoration: InputDecoration(
-                            hintStyle: TextStyle(color: Colors.white),
-                            hintText: 'البحث',
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 10),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.only(
-                                bottomRight: Radius.circular(10),
-                                topRight: Radius.circular(10),
-                              ),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.only(
-                                bottomRight: Radius.circular(10),
-                                topRight: Radius.circular(10),
-                              ),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.only(
-                                bottomRight: Radius.circular(10),
-                                topRight: Radius.circular(10),
-                              ),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
                 Column(
                   children: [
+                    Container(
+                      padding: EdgeInsets.only(top: 60, left: 20, right: 20),
+                      child: Row(
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              controller.updateWeather();
+                            },
+                            child: Container(
+                              width: 49,
+                              height: 49,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  bottomLeft: Radius.circular(10),
+                                ),
+                              ),
+                              child: Icon(
+                                Icons.search,
+                                color: Color(0xff31304D),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 5,
+                            child: TextField(
+                              textAlign: TextAlign.right,
+                              onChanged: (value) => controller.city = value,
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                              textInputAction: TextInputAction.search,
+                              onSubmitted: (value) =>
+                                  controller.updateWeather(),
+                              decoration: InputDecoration(
+                                hintStyle: TextStyle(color: Colors.white),
+                                hintText: 'البحث',
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 10),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.only(
+                                    bottomRight: Radius.circular(10),
+                                    topRight: Radius.circular(10),
+                                  ),
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.only(
+                                    bottomRight: Radius.circular(10),
+                                    topRight: Radius.circular(10),
+                                  ),
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.only(
+                                    bottomRight: Radius.circular(10),
+                                    topRight: Radius.circular(10),
+                                  ),
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                     controller.isLoading
                         ? WeatherCard(controller: controller)
                         : Container(

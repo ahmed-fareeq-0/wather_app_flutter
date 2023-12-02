@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:weather_app/screens/homeScreen.dart';
 import 'package:weather_app/screens/splashScreen.dart';
 import 'package:weather_app/utils/Binding/HomeBinding.dart';
 

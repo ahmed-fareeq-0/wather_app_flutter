@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:weather_app/screens/homeScreen.dart'; // قم بتعديلها حسب هيكلة مشروعك
+import 'package:weather_app/screens/homeScreen.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -12,15 +12,13 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    // استخدم Timer لتأخير الانتقال إلى الشاشة التالية بعد مرور فترة زمنية معينة
     Timer(
-      Duration(seconds: 2), // يمكنك تغيير هذه الفترة حسب احتياجاتك
+      Duration(seconds: 2),
       () {
-        // قم بالانتقال إلى الشاشة التالية
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => HomeScreen(), // قم بتعديلها حسب هيكلة مشروعك
+            builder: (context) => HomeScreen(),
           ),
         );
       },
